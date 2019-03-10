@@ -35,7 +35,7 @@ export default () => (
         query={graphql`
             query PoetryListingsQuery {
             allMarkdownRemark(
-                sort: { order: DESC, fields: [frontmatter___date] },
+                sort: { order: DESC, fields: [frontmatter___title] },
                 filter: { frontmatter: { templateKey: { eq: "poetry-page" } }}
             ) {
                 edges {
