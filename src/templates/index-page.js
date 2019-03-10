@@ -6,8 +6,8 @@ import Layout from '../components/Layout'
 
 export const IndexPageTemplate = ({
   title,
-  subheading,
-  mainpitch,
+  subtitle,
+  description,
 }) => (
   <div>
     <div>
@@ -18,36 +18,21 @@ export const IndexPageTemplate = ({
       </h1>
       <h3 className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
       >
-        {subheading}
+        {subtitle}
       </h3>
     </div>
     <section className="section section--gradient">
-      <div className="container">
-        <div className="section">
           <div className="content">
-            <div className="tile">
-              <h1 className="title">{mainpitch.title}</h1>
-            </div>
-            <div className="tile">
-              <h3 className="subtitle">{mainpitch.description}</h3>
-            </div>
+            {description}
           </div>
-        </div>
-      </div>
     </section>
   </div>
 )
 
 IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
-  heading: PropTypes.string,
-  subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
+  subtitle: PropTypes.string,
   description: PropTypes.string,
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array,
-  }),
 }
 
 const IndexPage = ({ data }) => {
@@ -56,13 +41,9 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <IndexPageTemplate
-        image={frontmatter.image}
         title={frontmatter.title}
-        heading={frontmatter.heading}
-        subheading={frontmatter.subheading}
-        mainpitch={frontmatter.mainpitch}
+        subtitle={frontmatter.subtitle}
         description={frontmatter.description}
-        intro={frontmatter.intro}
       />
     </Layout>
   )
@@ -83,34 +64,8 @@ query IndexPageTemplate {
   markdownRemark(frontmatter: {templateKey: {eq: "index-page"}}) {
       frontmatter {
         title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        heading
-        subheading
-        mainpitch {
-          title
-          description
-        }
+        subtitle
         description
-        intro {
-          blurbs {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            text
-          }
-          heading
-          description
-        }
       }
     }
   }
