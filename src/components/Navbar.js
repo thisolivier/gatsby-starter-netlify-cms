@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Clock from '../components/Clock'
 import PoetryPageListings from '../components/PoetryPageListings'
 
 const Navbar = class extends React.Component {
@@ -37,23 +38,15 @@ const Navbar = class extends React.Component {
             <Link to="/" className="navbar-item" title="Logo">
               Sapiosexual
             </Link>
+            <Clock />
             {/* Hamburger menu */}
-            <div className="menu-link" data-target="navMenu">
+          </div>
+          <div className="menu-link" data-target="navMenu">
               Menu
-            </div>
           </div>
           <div id="navMenu" className="navbar-menu">
-            <div className="navbar-start has-text-centered">
-              <Link to="/" className="navbar-item">
-                Home
-              </Link>
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
+            <div className="navbar-start">
               <PoetryPageListings />
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
               <a className="navbar-item" href="/admin/" target="_blank" rel="noopener noreferrer">
                 Admin
               </a>

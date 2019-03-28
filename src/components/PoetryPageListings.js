@@ -46,7 +46,6 @@ export default () => (
                     }
                     frontmatter {
                         title
-                        templateKey
                     }
                 }
                 }
